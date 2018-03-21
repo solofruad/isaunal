@@ -1,4 +1,6 @@
 
 var hello = require("./helloWorld.js")
-
-hello.index("ISA");
+var helloGerman = require("./HelloGerman.js")
+var BoardBase = require("./BoardBase.js")
+hello.index("ISA")
+helloGerman.indexGerman("UNAL")
