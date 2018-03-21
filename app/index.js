@@ -1,4 +1,4 @@
 
 var hello = require("./helloWorld.js")
 
-hello.index("ISA")
+hello.index("ISA");
