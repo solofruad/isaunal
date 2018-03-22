@@ -40,4 +40,19 @@
             }
             return false;
         };
+        findHoleAtPosition : function(x, y, r, includingInvalidHoles){
+            if(!r){ r = 0.5;}
+            var count = this.getHoleCount();
+            for(var id = 0; id < count; ++id){
+                if(includingInvalidHoles || this.hasValidHole(id)){
+                    var dx = this.getHoleLayoutPositionX(id) - x;
+                    var dy = this.getHoleLayoutPositionY(id) - y;
+                    if(dx*dx+dy*dy < r*r)
+                        return id;
+                    
+                }
+            }
+            return INVALID_HOLE_ID;
+        };
+
     }
