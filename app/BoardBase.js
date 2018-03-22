@@ -24,5 +24,20 @@
             }
             return false;
         };
-        
+        undoMovePeg: function(fromId, toId){
+            if(this.hasEmptyHole(fromId) && this.hasPeg(toId)){
+                var dir = this.getDirFromToDist2(fromId, toId);
+                if(dir != INVALID_DIR){
+                    var nextId = this.getAdjacent(fromId, dir);
+                    var nextNextId = this.getAdjacent(nextId, dir);
+                    if(this.hasEmptyHole(nextId)){
+                        this.pullPeg(nextNextId);
+                        this.pushPeg(nextId);
+                        this.pushPeg(fromId);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
     }
