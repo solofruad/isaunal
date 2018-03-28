@@ -101,7 +101,31 @@ module.exports = {
         }
         return INVALID_HOLE_ID;
     };
+    getPegCount : function(){
+            var holeCount = this.getHoleCount();
+            var pegCount = 0;
+            for(var id = 0; id < holeCount; ++id){
+                if(this.hasPeg(id)){
+                    ++pegCount;
+                }
+            }
+            return pegCount;
+    };
+    isSolved : function(){
+            return this.getPegCount() == 1;
 
+    };
+    tisEnd : function(){
+            var holeCount = this.getHoleCount();
+            for(var id = 0; id < holeCount; ++id){
+                if(this.hasPeg(id)){
+                    if(this.canMoveFrom(id)){
+                        return false;
+                    }
+                }
+            }
+            return true;
+    };
     eachHole : function(fun, includingInvalidHoles){
         var holeCount = this.getHoleCount();
         for(var id = 0; id < holeCount; ++id){
