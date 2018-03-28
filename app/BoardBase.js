@@ -48,23 +48,23 @@ module.exports = {
                 }
             }
             return false;
-        };
-        tcanMoveFromTo : function(fromId, toId){
+    };
+    canMoveFromTo : function(fromId, toId){
             if(this.hasPeg(fromId) && this.hasEmptyHole(toId)){
                 return this.hasPeg(
                     this.getAdjacent(fromId,
                                      this.getDirFromToDist2(fromId, toId)));
             }
             return false;
-        };
-        canMoveDir :function(fromId, dir){
+    };
+    canMoveDir :function(fromId, dir){
             var nextId = this.getAdjacent(fromId, dir);
             var nextNextId = this.getAdjacent(nextId, dir);
             return this.hasPeg(fromId) &&
                 this.hasPeg(nextId) &&
                 this.hasEmptyHole(nextNextId);
-        };
-        getDirFromTo : function(fromId, toId){
+    };
+    getDirFromTo : function(fromId, toId){
             for(var dir = 0; dir < this.getDirCount(); ++dir){
                 var id = this.getAdjacent(fromId, dir);
                 while(this.hasValidHole(id)){
@@ -75,8 +75,8 @@ module.exports = {
                 }
             }
             return INVALID_DIR;
-        };
-        getDirFromToDist2 : function(fromId, toId){
+    };
+    getDirFromToDist2 : function(fromId, toId){
             if(this.hasValidHole(fromId) && this.hasValidHole(toId)){
                 for(var dir = 0; dir < this.getDirCount(); ++dir){
                     var nextNextId = this.getAdjacent(this.getAdjacent(fromId, dir), dir);
@@ -86,7 +86,7 @@ module.exports = {
                 }
             }
             return INVALID_DIR;
-        };
+    };
     findHoleAtPosition : function(x, y, r, includingInvalidHoles){
         if(!r){ r = 0.5;}
         var count = this.getHoleCount();
