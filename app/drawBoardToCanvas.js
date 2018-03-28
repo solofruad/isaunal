@@ -1,4 +1,5 @@
-module.exports = function(canvas, ctx, board, opt, draggingPeg, drawInvalidHoles) {
+module.exports = 
+ {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     var left = opt.paddingLeft;
     var top = opt.paddingTop;
