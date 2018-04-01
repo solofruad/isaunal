@@ -1,10 +1,15 @@
-module.exports = {
-       
-        if(!holes) { holes = new Array(w*h);}
-        GridBoardBase.call(this, holes);
+var GridBoardBase = require("./GridBoardBase.js")
 
+var RectangularBoard = function(w, h, holes){
+    
+    if(!holes) { holes = new Array(w*h);}
+    GridBoardBase.call(this, holes);
 
-        xy : function(x, y){
+    return {        
+
+        // Board Interface
+
+        xy: function(x, y){
             if(x >= 0 && x < w && y >= 0 && y < h){
                 return x + y * w;
             }
@@ -12,7 +17,7 @@ module.exports = {
                 return INVALID_HOLE_ID;
             }
         };
-        getAdjacent : function(holeId, dir){
+        getAdjacent: function(holeId, dir){
             if(this.hasValidHole(holeId)){
                 switch(dir){
                 case 0: return toX(holeId)+1 < w ? holeId+1 : INVALID_HOLE_ID;
@@ -23,38 +28,28 @@ module.exports = {
             }
             return INVALID_HOLE_ID;
         };
-        getDirCount : function(){
+        getDirCount: function(){
             return 4;
         };
-        getHoleLayoutPositionX : function(holeId){
+        getHoleLayoutPositionX: function(holeId){
             return toX(holeId);
         };
-        getHoleLayoutPositionY : function(holeId){
+        getHoleLayoutPositionY: function(holeId){
             return toY(holeId);
         };
-        getLayoutSizeX : function(){
+        getLayoutSizeX: function(){
             return w-1;
         };
-        getLayoutSizeY : function(){
+        getLayoutSizeY: function(){
             return h-1;
         };
-        getWidth : function(){ return w;};
-        getHeight : function(){ return h;};
-        getSize : function(){ return Math.max(w, h);};
-        getType : function(){ return RectangularBoard.TYPEID;};
-        toString : function(){
-            return this.getType() + " " + w + " " + h + " " + this.getHolesString();
-        };
-        copyFrom : function(from, left, top){
-            for(var y = 0; y < h; ++y){
-                for(var x = 0; x < w; ++x){
-                    this.setHoleState(this.xy(x, y), from.getHoleState(from.xy(left+x, top+y)));
-                }
-            }
-        };
+        getWidth: function(){ return w;};
+        getHeight: function(){ return h;};
+        getSize: function(){ return Math.max(w, h);};
 
-    
-        fillRect : function(rectX, rectY, rectW, rectH, state){
+        // Rectangular Only
+
+        fillRect: function(rectX, rectY, rectW, rectH, state){
             if(rectW <= 0 || rectH <= 0){
                 return this;
             }
@@ -69,6 +64,9 @@ module.exports = {
             return this;
         };
 
-        function toX(holeId){ return holeId % w;}
-        function toY(holeId){ return Math.floor(holeId / w);}
+        toX: function(holeId){ return holeId % w;}
+        toY: function(holeId){ return Math.floor(holeId / w);}
     }
+}
+
+module.exports = RectangularBoard;
