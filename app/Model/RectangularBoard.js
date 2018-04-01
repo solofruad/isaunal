@@ -16,7 +16,7 @@ var RectangularBoard = function(w, h, holes){
             else{
                 return INVALID_HOLE_ID;
             }
-        };
+        },
         getAdjacent: function(holeId, dir){
             if(this.hasValidHole(holeId)){
                 switch(dir){
@@ -27,22 +27,22 @@ var RectangularBoard = function(w, h, holes){
                 }
             }
             return INVALID_HOLE_ID;
-        };
+        },
         getDirCount: function(){
             return 4;
-        };
+        },
         getHoleLayoutPositionX: function(holeId){
             return toX(holeId);
-        };
+        },
         getHoleLayoutPositionY: function(holeId){
             return toY(holeId);
-        };
+        },
         getLayoutSizeX: function(){
             return w-1;
-        };
+        },
         getLayoutSizeY: function(){
             return h-1;
-        };
+        },
         getWidth: function(){ return w;};
         getHeight: function(){ return h;};
         getSize: function(){ return Math.max(w, h);};
@@ -62,9 +62,9 @@ var RectangularBoard = function(w, h, holes){
                 holeId += w - rectW;
             }
             return this;
-        };
+        },
 
-        toX: function(holeId){ return holeId % w;}
+        toX: function(holeId){ return holeId % w;},
         toY: function(holeId){ return Math.floor(holeId / w);}
     }
 }
