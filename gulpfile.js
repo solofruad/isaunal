@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream');
 
 
-var entry = './app/index.js'; //Script de entrada 
+var entry = './app/main.js'; //Script de entrada 
 var args = watchify.args; 
 args.debug = true; //Genera el sourcemap para debuguear
 args.fullPaths = false; //Evita el uso de paths absolutos 
