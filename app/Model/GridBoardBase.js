@@ -1,31 +1,31 @@
 var BoardBase = require("./BoardBase.js")
 
+
 var GridBoardBase = function(holes){
-    BoardBase.call(this);
     
-    return {        
+    BoardBase.call(this);
 
-        // Board Interface
+    // Board Interface
 
-        getHoleCount : function(){
-            return holes.length;
-        },
-        hasValidHole : function(holeId){
-            return holes[holeId] !== undefined;
-        },
-        hasEmptyHole : function(holeId){
-            return holes[holeId] === false;
-        },
-        hasPeg : function(holeId){
-            return holes[holeId] === true;
-        },
-        setPegExists : function(holeId, peg){
-            if(this.hasValidHole(holeId)){
-                holes[holeId] = peg === true;
-            }
-            return this;
-        };
-    }
+    this.getHoleCount = function(){
+        return holes.length;
+    };
+    this.hasValidHole = function(holeId){
+        return holes[holeId] !== undefined;
+    };
+    this.hasEmptyHole = function(holeId){
+        return holes[holeId] === false;
+    };
+    this.hasPeg = function(holeId){
+        return holes[holeId] === true;
+    };
+
+    this.setPegExists = function(holeId, peg){
+        if(this.hasValidHole(holeId)){
+            holes[holeId] = peg === true;
+        }
+        return this;
+    };
 }
 
 module.exports = GridBoardBase;
