@@ -1,11 +1,10 @@
+var createGameBox = require("./Control/CreateGameBox.js");
+var getLastScriptNode = require("./Utility/GetLastScriptNode.js");
+var $ = require("jquery");
 
-var hello = require("./helloWorld.js")
-var helloGerman = require("./HelloGerman.js")
-var BoardBase = require("./BoardBase.js")
-var drawBoardToCanvas = require("./drawBoardToCanvas.js")
-hello.index("ISA")
-helloGerman.indexGerman("UNAL")
+window.INVALID_HOLE_ID = -1;
+window.INVALID_DIR = -1;   
 
-
-var INVALID_HOLE_ID = -1;
-var INVALID_DIR = -1;   
+$(document).ready(function() {
+	$("#gameBoard").append(createGameBox({}))
+});
