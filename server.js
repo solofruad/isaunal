@@ -16,5 +16,9 @@ app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
+app.get('/creditos', function(req, res) {
+    res.render('pages/creditos');
+});
+
 app.listen(8080);
 console.log('La aplicación ya esta funcionando en el puerto htt://127.0.0.1:8080');
