@@ -1,5 +1,4 @@
 var createGameBox = require("./Control/CreateGameBox.js");
-var getLastScriptNode = require("./Utility/GetLastScriptNode.js");
 var $ = require("jquery");
 
 window.INVALID_HOLE_ID = -1;
